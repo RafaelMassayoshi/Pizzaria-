@@ -1,0 +1,93 @@
+.pizza {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pizza.large {
+  width: 310px;
+  height: 310px;
+}
+
+.pizza.small {
+  width: 150px;
+  height: 150px;
+}
+
+.pizza-base,
+.pizza-cheese,
+.pepperoni {
+  position: absolute;
+  display: block;
+}
+
+.pizza-base {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pizza-cheese {
+  width: 84%;
+  height: 84%;
+  top: 8%;
+  left: 8%;
+}
+
+.pepperoni {
+  width: 12%;
+  height: 12%;
+}
+
+/* Posição dos pepperonis - pizza grande */
+
+.pizza.large .pepperoni-1 {
+  left: 28%;
+  top: 27%;
+}
+
+.pizza.large .pepperoni-2 {
+  left: 60%;
+  top: 23%;
+}
+
+.pizza.large .pepperoni-3 {
+  left: 48%;
+  top: 54%;
+}
+
+.pizza.large .pepperoni-4 {
+  left: 22%;
+  top: 62%;
+}
+
+.pizza.large .pepperoni-5 {
+  left: 68%;
+  top: 67%;
+}
+
+/* Posição dos pepperonis - cards */
+
+.pizza.small .pepperoni-1 {
+  left: 20%;
+  top: 27%;
+}
+
+.pizza.small .pepperoni-2 {
+  left: 53%;
+  top: 23%;
+}
+
+.pizza.small .pepperoni-3 {
+  left: 40%;
+  top: 54%;
+}
+
+.pizza.small .pepperoni-4 {
+  left: 14%;
+  top: 62%;
+}
+
+.pizza.small .pepperoni-5 {
+  left: 62%;
+  top: 67%;
+}
