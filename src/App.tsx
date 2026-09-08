@@ -1,6 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 
-import { Home } from "./pages/Home/Home";
+import { Home } from './pages/Home/Home';
+import { Cardapio } from './pages/Cardapio/Cardapio';
 
 function App() {
   return (
@@ -13,13 +18,11 @@ function App() {
           element={<Home />}
         />
 
-        {/* Próxima etapa */}
         <Route
           path="/cardapio"
-          element={<div>Cardápio</div>}
+          element={<Cardapio />}
         />
 
-        {/* Próxima etapa */}
         <Route
           path="/carrinho"
           element={<div>Carrinho</div>}

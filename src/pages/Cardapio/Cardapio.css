@@ -1,0 +1,431 @@
+.cardapio {
+  min-height: 100vh;
+
+  background: #f9f6ef;
+
+  color: #1f1a14;
+
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* ==========================================
+   MAIN
+========================================== */
+
+.cardapio-main {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding: 42px 72px 80px;
+
+  box-sizing: border-box;
+}
+
+
+/* ==========================================
+   TÍTULO
+========================================== */
+
+.cardapio-heading h1 {
+  margin: 0;
+
+  font-size: 40px;
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  color: #1f1a14;
+}
+
+.cardapio-heading p {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.4;
+
+  color: #665e54;
+}
+
+
+/* ==========================================
+   FILTROS
+========================================== */
+
+.category-filters {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 30px;
+  margin-bottom: 33px;
+}
+
+.category-filter {
+  height: 42px;
+
+  padding: 0 24px;
+
+  border: 0;
+
+  border-radius: 21px;
+
+  background: #ffffff;
+
+  color: #1f1a14;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.category-filter:hover {
+  transform: translateY(-1px);
+}
+
+.category-filter.active {
+  background: #c71a12;
+
+  color: #ffffff;
+
+  font-weight: 600;
+}
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.pizza-menu {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 45px 33px;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.menu-pizza-card {
+  width: 100%;
+  height: 235px;
+
+  display: flex;
+  align-items: flex-start;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+
+/* ==========================================
+   IMAGEM
+========================================== */
+
+.menu-pizza-image {
+  width: 150px;
+  height: 150px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==========================================
+   INFORMAÇÕES
+========================================== */
+
+.menu-pizza-info {
+  min-width: 0;
+
+  height: 195px;
+
+  margin-left: 20px;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-pizza-info h2 {
+  margin: 2px 0 0;
+
+  font-size: 20px;
+  line-height: 28px;
+
+  font-weight: 600;
+
+  color: #1f1a14;
+}
+
+.menu-pizza-info p {
+  margin: 5px 0 0;
+
+  max-width: 200px;
+
+  font-size: 13px;
+  line-height: 1.4;
+
+  color: #665e54;
+}
+
+
+/* ==========================================
+   PREÇO + BOTÃO
+========================================== */
+
+.menu-pizza-bottom {
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.menu-pizza-bottom strong {
+  color: #c71a12;
+
+  font-size: 18px;
+  line-height: 25px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.menu-pizza-bottom .button {
+  flex-shrink: 0;
+
+  width: 102px;
+  height: 40px;
+
+  padding: 0;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+}
+
+
+/* ==========================================
+   OBSERVAÇÃO
+========================================== */
+
+.delivery-note {
+  margin: 77px 0 0;
+
+  color: #665e54;
+
+  font-size: 13px;
+  line-height: 18px;
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1100px) {
+
+  .cardapio-main {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .pizza-menu {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ==========================================
+   TABLET PEQUENO
+========================================== */
+
+@media (max-width: 800px) {
+
+  .cardapio-main {
+    padding: 35px 25px 60px;
+  }
+
+  .pizza-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-pizza-card {
+    max-width: 500px;
+  }
+
+  .category-filters {
+    flex-wrap: wrap;
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+  .cardapio-main {
+    padding: 30px 20px 50px;
+  }
+
+  .cardapio-heading h1 {
+    font-size: 32px;
+  }
+
+  .cardapio-heading p {
+    font-size: 15px;
+  }
+
+  .category-filters {
+    gap: 8px;
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .category-filter {
+    height: 38px;
+
+    padding: 0 18px;
+
+    font-size: 13px;
+  }
+
+  .menu-pizza-card {
+    height: auto;
+
+    min-height: 190px;
+
+    padding: 15px;
+  }
+
+  .menu-pizza-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .menu-pizza-image .pizza.small {
+    width: 120px;
+    height: 120px;
+  }
+
+  .menu-pizza-info {
+    height: 160px;
+
+    margin-left: 15px;
+  }
+
+  .menu-pizza-info h2 {
+    font-size: 17px;
+    line-height: 23px;
+  }
+
+  .menu-pizza-info p {
+    font-size: 12px;
+  }
+
+  .menu-pizza-bottom {
+    align-items: flex-end;
+  }
+
+  .menu-pizza-bottom strong {
+    font-size: 16px;
+  }
+
+  .menu-pizza-bottom .button {
+    width: 90px;
+    height: 36px;
+
+    font-size: 13px;
+  }
+
+  .delivery-note {
+    margin-top: 45px;
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE PEQUENO
+========================================== */
+
+@media (max-width: 430px) {
+
+  .menu-pizza-card {
+    min-height: 180px;
+  }
+
+  .menu-pizza-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .menu-pizza-image .pizza.small {
+    width: 100px;
+    height: 100px;
+  }
+
+  .menu-pizza-info {
+    height: 150px;
+
+    margin-left: 12px;
+  }
+
+  .menu-pizza-info h2 {
+    font-size: 16px;
+  }
+
+  .menu-pizza-info p {
+    font-size: 11px;
+  }
+
+  .menu-pizza-bottom {
+    gap: 5px;
+  }
+
+  .menu-pizza-bottom strong {
+    font-size: 14px;
+  }
+
+  .menu-pizza-bottom .button {
+    width: 82px;
+
+    font-size: 12px;
+  }
+
+}
