@@ -1,21 +1,24 @@
+import type {
+  ButtonHTMLAttributes,
+  ReactNode,
+} from 'react';
+
 import './Button.css';
 
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  type?: 'button' | 'submit';
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
 }
 
 export function Button({
   children,
-  onClick,
-  type = 'button',
+  ...props
 }: ButtonProps) {
   return (
     <button
-      type={type}
+      type="button"
       className="button"
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>

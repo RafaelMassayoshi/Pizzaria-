@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 import { Header } from '../../components/Header/Header';
 import { PizzaIllustration } from '../../components/PizzaIllustration/PizzaIllustration';
-import { Button } from '../../components/Button/Button'
+import { Button } from '../../components/Button/Button';
+
+import { useCart } from '../../context/CartContext';
 
 import './Cardapio.css';
 
@@ -33,100 +35,108 @@ const pizzas: Pizza[] = [
   {
     id: 1,
     name: 'Calabresa',
-    description: 'Molho, muçarela, calabresa e cebola.',
+    description:
+      'Molho, muçarela, calabresa e cebola.',
     price: 'R$ 49,90',
     categoria: 'Tradicionais',
   },
   {
     id: 2,
     name: 'Margherita',
-    description: 'Molho, muçarela, tomate e manjericão.',
+    description:
+      'Molho, muçarela, tomate e manjericão.',
     price: 'R$ 46,90',
     categoria: 'Tradicionais',
   },
   {
     id: 3,
     name: 'Frango Cremoso',
-    description: 'Frango, catupiry e milho.',
+    description:
+      'Frango, catupiry e milho.',
     price: 'R$ 52,90',
     categoria: 'Especiais',
   },
   {
     id: 4,
     name: 'Quatro Queijos',
-    description: 'Muçarela, provolone, parmesão e gorgonzola.',
+    description:
+      'Muçarela, provolone, parmesão e gorgonzola.',
     price: 'R$ 55,90',
     categoria: 'Especiais',
   },
   {
     id: 5,
     name: 'Pepperoni',
-    description: 'Molho, muçarela e pepperoni.',
+    description:
+      'Molho, muçarela e pepperoni.',
     price: 'R$ 54,90',
     categoria: 'Tradicionais',
   },
   {
     id: 6,
     name: 'Vegetariana',
-    description: 'Muçarela, tomate, cebola, milho e pimentão.',
+    description:
+      'Muçarela, tomate, cebola, milho e pimentão.',
     price: 'R$ 51,90',
     categoria: 'Vegetarianas',
   },
 ];
 
-export function Cardapio() {
-  const [categoriaSelecionada, setCategoriaSelecionada] =
-    useState<Categoria>('Todas');
+function converterPreco(preco: string) {
+  return Number(
+    preco
+      .replace('R$ ', '')
+      .replace('.', '')
+      .replace(',', '.')
+  );
+}
 
-  const [quantidadeCarrinho, setQuantidadeCarrinho] =
-    useState(2);
+export function Cardapio() {
+  const [
+    categoriaSelecionada,
+    setCategoriaSelecionada,
+  ] = useState<Categoria>('Todas');
+
+  const { addItem } = useCart();
 
   const pizzasFiltradas =
     categoriaSelecionada === 'Todas'
       ? pizzas
       : pizzas.filter(
           (pizza) =>
-            pizza.categoria === categoriaSelecionada
+            pizza.categoria ===
+            categoriaSelecionada
         );
 
-  function adicionarAoCarrinho() {
-    setQuantidadeCarrinho(
-      (quantidade) => quantidade + 1
-    );
+  function adicionarAoCarrinho(
+    pizza: Pizza
+  ) {
+    addItem({
+      id: pizza.id,
+      name: pizza.name,
+      description: pizza.description,
+      price: converterPreco(pizza.price),
+    });
   }
 
   return (
     <div className="cardapio">
-
       <Header />
 
       <main className="cardapio-main">
-
-        {/* =====================================
-            CABEÇALHO DA PÁGINA
-        ===================================== */}
-
         <section className="cardapio-heading">
-
           <h1>Cardápio</h1>
 
           <p>
             Escolha sua pizza favorita e monte seu pedido.
           </p>
-
         </section>
-
-
-        {/* =====================================
-            FILTROS
-        ===================================== */}
 
         <div
           className="category-filters"
           role="group"
           aria-label="Categorias do cardápio"
         >
-
           {categorias.map((categoria) => (
             <button
               key={categoria}
@@ -137,93 +147,69 @@ export function Cardapio() {
                   : 'category-filter'
               }
               onClick={() =>
-                setCategoriaSelecionada(categoria)
+                setCategoriaSelecionada(
+                  categoria
+                )
               }
             >
               {categoria}
             </button>
           ))}
-
         </div>
-
-
-        {/* =====================================
-            PRODUTOS
-        ===================================== */}
 
         <section
           className="pizza-menu"
           aria-label="Pizzas"
         >
-
           {pizzasFiltradas.map((pizza) => (
-
             <article
               className="menu-pizza-card"
               key={pizza.id}
             >
-
               <div className="menu-pizza-image">
-
                 {/*
-                  IMAGEM:
+                  IMAGENS:
                   pizza.svg
                   cheese.svg
                   pepperoni.svg
-
-                  O componente reutiliza os assets
-                  fornecidos anteriormente.
                 */}
 
-                <PizzaIllustration size="small" />
-
+                <PizzaIllustration
+                  size="small"
+                />
               </div>
 
-
               <div className="menu-pizza-info">
-
-                <h2>
-                  {pizza.name}
-                </h2>
+                <h2>{pizza.name}</h2>
 
                 <p>
                   {pizza.description}
                 </p>
 
-
                 <div className="menu-pizza-bottom">
-
                   <strong>
                     {pizza.price}
                   </strong>
 
                   <Button
-                    onClick={adicionarAoCarrinho}
+                    onClick={() =>
+                      adicionarAoCarrinho(
+                        pizza
+                      )
+                    }
                   >
                     Adicionar
                   </Button>
-
                 </div>
-
               </div>
-
             </article>
-
           ))}
-
         </section>
-
-
-        {/* =====================================
-            OBSERVAÇÃO
-        ===================================== */}
 
         <p className="delivery-note">
           Taxa de entrega calculada no checkout.
         </p>
-
       </main>
-
     </div>
   );
 }
